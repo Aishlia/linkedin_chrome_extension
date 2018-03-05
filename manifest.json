@@ -1,0 +1,31 @@
+{
+  "manifest_version": 2,
+
+  "name": "Linkedin profile thing",
+  "description": "This extension will analyze a page",
+  "version": "0.5",
+
+  "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["content.js"]
+      }
+    ],
+
+  "browser_action": {
+   "default_icon": "icon.png",
+   "default_popup": "popup.html",
+   "default_title": "-----"
+  },
+
+  "permissions": [
+   "activeTab",
+   "contextMenus"
+  ],
+
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  }
+
+}
