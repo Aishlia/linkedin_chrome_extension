@@ -17,4 +17,4 @@ function get_info() {
   });
 }
 
-document.getElementById('clickme').addEventListener('click', get_info);
+document.getElementById('saveContact').addEventListener('click', get_info);
