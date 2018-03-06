@@ -20,7 +20,9 @@
 
   "permissions": [
    "activeTab",
-   "contextMenus"
+   "contextMenus",
+   "tabs",
+   "<all_urls>"
   ],
 
   "background": {
