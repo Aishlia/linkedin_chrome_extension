@@ -1,7 +1,7 @@
 info = {
   name: "",
   title: "",
-  location_of_company: "",
+  location_of_contact: "",
   company_name: ""
 };
 
@@ -34,7 +34,7 @@ function get_info() {
       let span = elt.getElementsByTagName("span");
       for (elt_a of span) {
         if (elt_a.classList.contains("location")) {
-          info.location_of_company = elt_a.innerHTML;
+          info.location_of_contact = elt_a.innerHTML;
         }
       }
     }
