@@ -51,6 +51,11 @@ for (elt of a) {
   if (elt.classList.contains('meta-link') && elt.classList.contains('website')){
     company_url = elt.href;
     console.log(elt.href);
+    console.log("Name: ", name); // Name
+console.log("Title: ", title); // sometime people put TITLE, 'company name' <<-- clean that up
+console.log("Location: ", location_of_company) // Location
+console.log("Company Name: ", company_name); // Company Name
+console.log("Company URL: ", company_url);
   }
 }
 

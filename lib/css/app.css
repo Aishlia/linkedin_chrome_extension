@@ -1,0 +1,51 @@
+.main{
+    width: 360px;
+    height: 200px;
+    padding: 20px;
+}
+
+h1{
+    text-align: center;
+    font-size: 35px;
+    line-height: 40px;
+    margin: 0 auto 30px auto;
+    color: #4a4a4a;
+    width: 80%;
+    border-bottom: 1px solid #eee;
+}
+
+button{
+    transition: all .02s ease 0s;
+    text-align: center;
+    display: block;
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 30px;
+    padding: 15px;
+    height: 60px;
+    width: 45%;
+    letter-spacing: .07rem;
+}
+
+#findContact{
+    background: #3896cd;
+    color: #fff;
+    border: none;
+    float: left;
+}
+
+#saveContact{
+    background: white;
+    color: #3896cd;
+    border: 1px solid #e1e1e1;
+    float: right;
+}
+
+.padding{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+hr{
+    border-color: #eee;
+}
