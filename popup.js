@@ -12,9 +12,13 @@
 // }
 
 function get_user_info() {
+  back = chrome.extension.getBackgroundPage()
+  back.addInfo('name', 'Eduardo Morales')
   chrome.tabs.executeScript({
     file: 'get_user_info.js'
   });
 }
+
+
 
 document.getElementById('saveContact').addEventListener('click', get_user_info);
