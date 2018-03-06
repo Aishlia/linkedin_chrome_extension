@@ -11,10 +11,10 @@
 // 	request.send();
 // }
 
-function get_info() {
+function get_user_info() {
   chrome.tabs.executeScript({
-    file: 'get_info.js'
+    file: 'get_user_info.js'
   });
 }
 
-document.getElementById('saveContact').addEventListener('click', get_info);
+document.getElementById('saveContact').addEventListener('click', get_user_info);

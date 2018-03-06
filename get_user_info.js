@@ -4,7 +4,7 @@ info = {
   'location_of_company':'',
   'company_name':'',
   'company_url':'',
-  'email':
+  'email':''
 }
 
 function get_info() {
@@ -55,6 +55,8 @@ function get_info() {
 }
 
 function get_company_url() {
+  let h3 = document.getElementsByTagName('h3');
+
   for (elt of h3) {
     if (elt.classList.contains('company-name')) {
       other_page_url = elt.getElementsByTagName('a')[0];
@@ -80,3 +82,9 @@ function print() {
         info.company_name + '\n' +
         info.company_url);
 };
+
+// document.getElementById('output').innerHTML = print();
+
+get_info();
+// window.onload = get_company_url();
+console.log(print());
