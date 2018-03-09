@@ -10,12 +10,53 @@
 </head>
 
 <body>
-  <div class="main">
-    <h1 class="padding">Linkedin Scraper</h1>
-    <!-- <h2 id='output'></h2> -->
-    <div class="padding">
-      <button type="button" id="findContact">Find Contact</button>
-      <button type="button" id="saveContact">Save Contact</button>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h1>LinkedIn Scraper</h1>
+      </div>
+    </div>
+    <div class="inner-form">
+      <div class="row">
+        <div class="col">
+          <div class="input-div">
+            <label for="ed_name">Full Name*</label>
+            <input type="text" id="ed_name" name="name" value="" placeholder="Name" />
+          </div>
+          <div class="input-div">
+            <label  class="adjust-input" for="ed_email">Email*</label>
+            <input type="text" class="adjust-input" id="ed_email" name="email" value="" placeholder="Email" />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="input-div">
+              <label for="ed_company_name">Company*</label>
+              <input type="text" id="ed_company_name" name="company" value="" placeholder="Company" />
+          </div>
+          <div class="input-div">
+              <label  class="adjust-input" for="ed_url">Company Website*</label>
+              <input type="text" class="adjust-input" id="ed_url" name="url" value="" placeholder="Website" />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="input-div">
+              <label for="ed_title">Title</label>
+              <input type="text" id="ed_title" name="title" value="" placeholder="Title" />
+          </div>
+          <div class="input-div">
+              <label  class="adjust-input" for="ed_location_of_contact">Location</label>
+              <input type="text" class="adjust-input" id="ed_location_of_contact" name="location" value="" placeholder="Location" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="button-group">
+      <button type="button" id="ed_findContact">Find Contact</button>
+      <button type="button" id="ed_saveContact">Save Contact</button>
     </div>
   </div>
 </body>

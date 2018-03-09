@@ -1,17 +1,39 @@
-.main{
-    width: 360px;
-    height: 200px;
-    padding: 20px;
+*{
+    -webkit-font-smoothing: antialiased;
+}
+
+.container{
+    width: 550px;
+    height: 550px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 25px;
+}
+
+.row{
+    margin-left: -15px;
+    margin-right: -15px;
+    overflow: hidden;
+}
+
+.col{
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    overflow: hidden;
 }
 
 h1{
     text-align: center;
     font-size: 35px;
     line-height: 40px;
-    margin: 0 auto 30px auto;
+    padding: 20px;
+    margin: 0 auto 0px auto;
     color: #4a4a4a;
     width: 80%;
     border-bottom: 1px solid #eee;
+    letter-spacing: .07rem;
 }
 
 button{
@@ -23,29 +45,71 @@ button{
     line-height: 30px;
     padding: 15px;
     height: 60px;
-    width: 45%;
+    width: 47.5%;
     letter-spacing: .07rem;
 }
 
-#findContact{
+.button-group{
+    overflow: hidden;
+    clear: both;
+    padding: 20px 0;
+}
+
+#ed_findContact{
     background: #3896cd;
     color: #fff;
     border: none;
     float: left;
 }
 
-#saveContact{
+#ed_saveContact{
     background: white;
     color: #3896cd;
     border: 1px solid #e1e1e1;
     float: right;
 }
 
-.padding{
-    padding-top: 20px;
-    padding-bottom: 20px;
+.inner-form{
+    padding: 20px 0;
 }
 
-hr{
-    border-color: #eee;
+input{
+    padding: 14px 20px;
+    font-size: 15px;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #e1e1e1;
+    border-radius: 0;
+    background: #fff;
+    margin-top: 15px;
+    width: 218px;
+    letter-spacing: .07rem;
+}
+
+label{
+    color: #797979;
+    font-size: 14px;
+    line-height: 15px;
+    font-weight: 700;
+    text-align: left;
+    display: block;
+    margin-bottom: 0px;
+    letter-spacing: .07rem;
+}
+
+.input-div{
+    margin-top: 25px;
+    width: 50%;
+}
+
+.input-div:nth-child(even){
+    float: right;
+}
+
+.input-div:nth-child(odd){
+    float: left;
+}
+
+.adjust-input{
+    margin-left: 14px;
 }

@@ -15,9 +15,16 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 
   // Returns Current Object
   sendResponse({ response: info });
+  
 });
 
-// Display Whatever Data You Want
-function display_info(data) {
+// Display Object of Details
+function display_info() {
+  return info;
+}
+
+function display(data){
   alert(data);
 }
+
+chrome.browserAction.onClicked.addListener(function(tab) { alert('icon clicked')});

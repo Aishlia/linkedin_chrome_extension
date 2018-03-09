@@ -40,7 +40,7 @@ function get_info() {
     }
   }
 
-  // Looking for the company and website (just the url to the linkdin)
+  // Looking for the company and website (just the url to the linkedin)
   let h3 = document.getElementsByTagName("h3");
 
   for (elt of h3) {
@@ -53,6 +53,7 @@ function get_info() {
 
   chrome.runtime.sendMessage(info, function(response) {
     if (response.response) {
+      console.log(response.response)
       return switch_page();
     }
   });
