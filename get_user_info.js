@@ -41,14 +41,18 @@ function get_info() {
   }
 
   // Looking for the company and website (just the url to the linkedin)
-  let h3 = document.getElementsByTagName("h3");
+  try {
+    let h3 = document.getElementsByTagName("h3");
 
-  for (elt of h3) {
-    if (elt.classList.contains("company-name")) {
-      info.company_name = elt.getElementsByTagName("a")[0].innerHTML;
-      company_url = elt.getElementsByTagName("a")[0].href;
-      break; // 'company-name' includes past and present companies so break after first which is most recent
+    for (elt of h3) {
+      if (elt.classList.contains("company-name")) {
+        info.company_name = elt.getElementsByTagName("a")[0].innerHTML;
+        company_url = elt.getElementsByTagName("a")[0].href;
+        break; // 'company-name' includes past and present companies so break after first which is most recent
+      }
     }
+  } catch (err) {
+    info.company_name = ""
   }
 
   chrome.runtime.sendMessage(info, function(response) {

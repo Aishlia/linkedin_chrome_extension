@@ -1,97 +1,85 @@
-// info = {
-//   'name':'',
-//   'title':'',
-//   'location_of_company':'',
-//   'company_name':'',
-//   'company_url':''
-// }
+// let div = document.getElementsByTagName("div");
 //
-// function get_info() {
-//   // Looking for the name
-//   let headers = document.getElementsByTagName('h1');
-//   for (elt of headers) {
-//     if (elt.classList.contains('member-name')) {
-//       info.name = elt.innerHTML;
-//     }
-//   }
+// for (elt of div) {
+//   if (elt.id == 'stream-container') {
+//     console.log(elt);
 //
-//   //Looking for current position at the company (bad)
-//   let h2 = document.getElementsByTagName('h2');
-//   for (elt of h2) {
-//     if (elt.classList.contains('position-title')) {
-//       info.title = elt.innerHTML;
-//       break; // 'position-title' includes past and present positions so break after first which is most recent
-//     }
-//   }
-//
-//   // Looking for the location (the one listed directly under the name)
-//   let li = document.getElementsByTagName('li');
-//   for (elt of li) {
-//     // if (elt.classList.contains('title')) {
-//     //   title = elt.innerHTML;
-//     //   console.log("Title: ", title); // Title
-//     // }
-//     if (elt.classList.contains('location-industry')) {
-//         let span = elt.getElementsByTagName('span');
-//         for (elt_a of span) {
-//           if (elt_a.classList.contains('location')) {
-//             info.location_of_company = elt_a.innerHTML;
-//           }
-//         }
-//     }
-//   }
-//
-//   // Looking for the company and website (just the url to the linkdin)
-//   let h3 = document.getElementsByTagName('h3');
-//
-//   for (elt of h3) {
-//     if (elt.classList.contains('company-name')) {
-//       info.company_name = elt.getElementsByTagName('a')[0].innerHTML
-//       company_url = elt.getElementsByTagName('a')[0].href
-//       break; // 'company-name' includes past and present companies so break after first which is most recent
-//     }
+//     let c = elt.getElementsByClassName("text-form-container")
+//     // c.value = 'hello'
+//     console.log(c)
 //   }
 // }
 
-// ----------
-// window.setTimeout(linkdin_url, (Math.floor((Math.random() * 7) + 4))*1000);
-//
-// function linkdin_url() {
-//   let h3 = document.getElementsByTagName('h3');
-//
-//   for (elt of h3) {
-//     if (elt.classList.contains('company-name')) {
-//       other_page_url = elt.getElementsByTagName('a')[0];
-//       if (other_page_url) other_page_url.click();
-//       break;
-//     }
-//   }
-//
-//   let a = document.getElementsByTagName('a');
-//
-//   for (elt of a) {
-//     if (elt.classList.contains('meta-link') && elt.classList.contains('website')){
-//       info.company_url = elt.href;
-//       console.log(elt.href);
-//     }
-//   }
-// }
+var location_of_person = [];
+var seniority = [];
+var first_page_people = [];
 
-// document.getElementById('clickme').addEventListener('click', get_info);
+function cleanName(name) {
+  var position = name.indexOf("(");
+  name = name.slice(0, (position-1))
+  return name;
+}
 
-//console.log(info);
+function lists(){
+  // The selection buttons on the sidebar
+  let ol = document.getElementsByClassName('facet-suggestions');
 
-// console.log("Full list/lists in dev")
-// let everything = document.getElementsByTagName('li');
-// for (elt of everything) {
-//   if (elt.classList.contains('title')) {
-//     console.log(elt.innerHTML);
-//     //break; // 'position-title' includes past and present positions so break after first which is most recent
-//   }
-// }
+  for (elt of ol){
+    let list = elt.getElementsByTagName("li");
+    if (elt.getAttribute('data-short-name') == 'G') {
+      for (li of list) {
+        location_of_person.push(cleanName(li.textContent));
+      }
+    }
+    if (elt.getAttribute('data-short-name') == 'SE') {
+      for (li of list) {
+        seniority.push(cleanName(li.textContent));
+      }
+    }
+  }
 
-// let paragraphs = document.getElementsByTagName('p');
-// for (elt of paragraphs) {
-//     data = elt;
-//     elt.style['background-color'] = '#FF00FF';
-// }
+  // Number of people in the company
+  string_of_employees = document.getElementsByClassName('page-heading')[0].innerHTML;
+  number = string_of_employees.indexOf("(") + 1;
+  number_of_employees = Number(string_of_employees.slice(number, number+2))
+
+  // pulling first page of people
+  let list_of_results = document.getElementById('results-list').getElementsByClassName("result");
+
+  for (elt of list_of_results) {
+    name = elt.getElementsByClassName("name-link")[0].innerHTML
+    position = elt.getElementsByClassName("info")[0].getElementsByTagName('p')[0].innerHTML
+    url = elt.getElementsByClassName("image-wrapper")[0].href
+    info = {
+      name: name,
+      position: position,
+      url: url
+    }
+    first_page_people.push(info)
+  }
+
+  if (number_of_employees <= 25) {
+    for (i in first_page_people) {
+      if (first_page_people[i].position == 'CEO' || first_page_people[i].position == 'CTO') {
+        target = first_page_people[i]
+        console.log(target)
+        // return target;
+      }
+    }
+    console.log("No CEO found")
+  }
+}
+
+setTimeout(lists, 2000);
+
+
+//
+// // div id=stream-container
+// // => siv class=smart-search
+// // => div class=left-rail-facets
+// => section class=sticky
+// => div class=facets-container
+// => ul class=facet-list
+// => li class=facet keywords
+// => form class=keywords-input text-form-input
+// =? div class=text-form-container
