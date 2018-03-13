@@ -45,4 +45,21 @@ function get_email(name, url) {
   request.send();
 }
 
+function send_info(name, company, location, title, website, email) {
+  var request = new XMLHttpRequest();
+
+  name = "name=" + name;
+  company = "&company=" + company;
+  location = "&location=" + location;
+  title = "&title=" + title;
+  website = "&website=" + website;
+  email = "&email=" + email;
+
+  request.open(
+    "POST", "http://127.0.0.1:8000/contacts/?" + name + company + location + title + website + email, true
+  );
+}
+
 get_url();
+
+send_info("asdf", "asdfg", "asdfasdf", "asdfadsf", "asdfasdf", "asdf@asdf.com");
