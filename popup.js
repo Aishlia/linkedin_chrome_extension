@@ -47,5 +47,19 @@ chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
   return setInfo(contact);
 });
 
+function searchUserInfo(){
+  chrome.tabs.executeScript({
+    file: 'search_company.js'
+  });
+};
+
+function filterUserInfo(){
+  chrome.tabs.executeScript({
+    file: 'filter_people.js'
+  });
+};
+
 document.getElementById('ed_saveContact').addEventListener('click', get_user_info);
 document.getElementById('ed_findContact').addEventListener('click', get_user_url);
+document.getElementById('ed_searchContact').addEventListener('click', searchUserInfo);
+document.getElementById('ed_filterContact').addEventListener('click', filterUserInfo);
