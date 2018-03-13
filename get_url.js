@@ -58,8 +58,9 @@ function send_info(name, company, location, title, website, email) {
   request.open(
     "POST", "http://127.0.0.1:8000/contacts/?" + name + company + location + title + website + email, true
   );
+  request.send();
 }
 
 get_url();
 
-send_info("asdf", "asdfg", "asdfasdf", "asdfadsf", "asdfasdf", "asdf@asdf.com");
+send_info("asdf", "asdfg", "asdfasdf", "asdfadsf", "https://www.asdfasdf.com", "asdf@asdf.com");
