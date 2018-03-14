@@ -6,31 +6,9 @@ var result = [];
 var dalits = ['Customer', 'Human', 'Affairs', 'Tax', 'Finance', 'Accounting',
 'Marketing', 'Software Engineer', 'Developer', 'Quality', 'Communications'];
 
-function cleanName(name) {
-  var position = name.indexOf("(");
-  name = name.slice(0, (position-1))
-  return name;
-}
-
 function lists(){
   console.log("start");
-  // The selection buttons on the sidebar
-  let ol = document.getElementsByClassName('facet-suggestions');
-
-  for (elt of ol){
-    let list = elt.getElementsByTagName("li");
-    if (elt.getAttribute('data-short-name') == 'G') {
-      for (li of list) {
-        location_of_person.push(cleanName(li.textContent));
-      }
-    }
-    if (elt.getAttribute('data-short-name') == 'SE') {
-      for (li of list) {
-        seniority.push(cleanName(li.textContent));
-      }
-    }
-  }
-
+  
   // Number of people in the company
   string_of_employees = document.getElementsByClassName('page-heading')[0].innerHTML;
   number = string_of_employees.indexOf("(");
@@ -54,6 +32,7 @@ function lists(){
   }
 
   for (i of first_page_people) {
+    console.log(i, i.cool)
     // console.log(i)
     position = i.position.toLowerCase();
     if (position.includes("cto") ||
@@ -73,12 +52,18 @@ function lists(){
         }
     }
 
+    console.log(i, i.cool)
+
     if (position.includes("iot")) {
           i.cool += 3;
     }
 
+    console.log(i, i.cool)
+
     if (i.name.includes("Rane Gridley"))
       i.cool += 100;
+
+    console.log(i, i.cool)
 
     if (position.includes("director") ||
         position.includes("vice president") ||
@@ -91,6 +76,8 @@ function lists(){
           }
     }
 
+    console.log(i, i.cool)
+
     // Get Rid of those Filthy Street Cleaners
     dalits.forEach(function(entry) {
       if (position.includes(entry)){
@@ -98,11 +85,15 @@ function lists(){
       }
     });
 
+    console.log(i, i.cool)
+
     if (position.includes("app") ||
         position.includes("business development") ||
         position.includes("sales")) {
           i.cool -= 2;
     }
+    console.log(i, i.cool)
+    console.log("---------------------------")
   }
 
   for (i of first_page_people) {
