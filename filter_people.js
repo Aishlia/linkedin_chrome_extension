@@ -13,7 +13,7 @@ function cleanName(name) {
 }
 
 function lists(){
-  console.log("start"); 
+  console.log("start");
   // The selection buttons on the sidebar
   let ol = document.getElementsByClassName('facet-suggestions');
 
@@ -42,6 +42,7 @@ function lists(){
   for (elt of list_of_results) {
     name = elt.getElementsByClassName("name-link")[0].innerHTML
     position = elt.getElementsByClassName("info")[0].getElementsByTagName('p')[0].innerHTML
+    position = position.replace('+', "");
     url = elt.getElementsByClassName("image-wrapper")[0].href
     info = {
       name: name,
@@ -53,10 +54,12 @@ function lists(){
   }
 
   for (i of first_page_people) {
-    if (i.position.includes("CTO") ||
-        i.position.includes("CEO") ||
-        (i.position.includes("President") && !i.position.includes("Vice"))|| // && !i.position.includes("Vice")
-        i.position.includes("Founder")) {
+    // console.log(i)
+    position = i.position.toLowerCase();
+    if (position.includes("cto") ||
+        position.includes("ceo") ||
+        (position.includes("president") && !position.includes("vice"))|| // && !i.position.includes("Vice")
+        position.includes("founder")) {
           if (number_of_employees < 50) {
             i.cool += 6
           } else if (number_of_employees >= 50 && number_of_employees < 1000) {
@@ -65,36 +68,39 @@ function lists(){
             i.cool -= 5
           }
           // i.cool = (number_of_employees < 50) ? (i.cool + 6) : (i.cool + 4);
-        if (i.position.includes("CTO")) {
+        if (position.includes("cto")) {
           i.cool += 2;
         }
     }
 
-    if (i.position.includes("IoT") ||
-        i.position.includes("iot")) {
+    if (position.includes("iot")) {
           i.cool += 3;
     }
 
-    if (i.position.includes("Director") ||
-        i.position.includes("Vice President") ||
-        i.position.includes("V.P.")) {
+    if (i.name.includes("Rane Gridley"))
+      i.cool += 100;
+
+    if (position.includes("director") ||
+        position.includes("vice president") ||
+        position.includes("vp") ||
+        position.includes("v.p.")) {
           i.cool += 4;
-          if (i.position.includes("Senior") ||
-              i.position.includes("Sr.")) {
+          if (position.includes("senior") ||
+              position.includes("sr.")) {
             i.cool += .5;
           }
     }
 
     // Get Rid of those Filthy Street Cleaners
     dalits.forEach(function(entry) {
-      if (i.position.includes(entry)){
+      if (position.includes(entry)){
         i.cool -= 3;
       }
     });
 
-    if (i.position.includes("App") ||
-        i.position.includes("Business Development") ||
-        i.position.includes("Sales")) {
+    if (position.includes("app") ||
+        position.includes("business development") ||
+        position.includes("sales")) {
           i.cool -= 2;
     }
   }
@@ -114,6 +120,8 @@ function lists(){
       result[i%len+1] = temp;
     }
   }
+
+  console.log(first_page_people)
 
   console.log(result);
   console.log("done");
