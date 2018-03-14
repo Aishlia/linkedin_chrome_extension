@@ -3,6 +3,9 @@ var seniority = [];
 var first_page_people = [];
 var result = [];
 
+var dalits = ['Customer', 'Human', 'Affairs', 'Tax', 'Finance', 'Accounting',
+'Marketing', 'Software Engineer', 'Developer', 'Quality', 'Communications'];
+
 function cleanName(name) {
   var position = name.indexOf("(");
   name = name.slice(0, (position-1))
@@ -10,7 +13,7 @@ function cleanName(name) {
 }
 
 function lists(){
-  console.log("start");
+  console.log("start"); 
   // The selection buttons on the sidebar
   let ol = document.getElementsByClassName('facet-suggestions');
 
@@ -82,29 +85,12 @@ function lists(){
           }
     }
 
-    // if ()
-
-    // if i.position.includes
-    if (i.position.includes("Customer") ||
-        i.position.includes("Human") ||
-        i.position.includes("Affairs") ||
-        i.position.includes("Tax") ||
-        i.position.includes("Affairs") ||
-        i.position.includes("Finance") ||
-        i.position.includes("Accounting") ||
-        i.position.includes("Marketing") ||
-        i.position.includes("Staff") ||
-        i.position.includes("Software Engineer") ||
-        i.position.includes("Developer") ||
-        i.position.includes("Quality") ||
-        i.position.includes("Communications")) {
-          i.cool -= 3;
-    }
-
-    if (i.name.includes('Rane Gridley')) {
-      i.cool += 100;
-    }
-//i.position.includes("Mobile") ||
+    // Get Rid of those Filthy Street Cleaners
+    dalits.forEach(function(entry) {
+      if (i.position.includes(entry)){
+        i.cool -= 3;
+      }
+    });
 
     if (i.position.includes("App") ||
         i.position.includes("Business Development") ||
