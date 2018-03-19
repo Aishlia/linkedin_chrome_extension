@@ -1,10 +1,12 @@
 var result = [];
+var repeat_big = 0;
+var repeat_medium = 0;
 
-//Goes off Indian Cast System, If you don't know it, pick up a fucking book 
+//Goes off Indian Cast System, If you don't know it, pick up a fucking book
 const untouchable = [
 'customer', 'human', 'affairs', 'tax', 'finance', 'accounting', 'marketing', 'software', 'engineer',
- 'developer', 'quality', 'communications', 'intern'
-];
+ 'developer', 'quality', 'communications', 'intern', 'investor', 'assistant'
+]; // investor, assistant
 
 // Slighty Touchable - You still shouldn't touch them though
 const sudra = [
@@ -13,6 +15,12 @@ const sudra = [
 
 // StopGap Words Found in Title - Adding to This List will Remove the Word From Titles
 const stopgap_words = ['of', 'and', 'for', 'at', 'to', 'the'];
+
+// hierarchy of fish
+const big_fish = ['cto','ceo','founder','owner','president', 'director'];
+
+const medium_fish = ['vice','v.p.','vp','senior','sr.'];
+// const medium_fish = [];
 
 const custom_scores = [
   {
@@ -38,6 +46,12 @@ const custom_scores = [
     'less_than_50': 6,
     'greater_than_50_less_than_1000': 4,
     'greater_than_1000_employees': -5
+  },
+  {
+    'position': 'owner',
+    'less_than_50': 6,
+    'greater_than_50_less_than_1000': 3,
+    'greater_than_1000_employees': -8
   },
   {
     'position': 'director',
@@ -95,7 +109,7 @@ function save_potential_leads(){
     name = elt.getElementsByClassName("name-link")[0].innerHTML;
     position = elt.getElementsByClassName("info")[0].getElementsByTagName('p')[0].innerHTML;
     url = elt.getElementsByClassName("image-wrapper")[0].href;
-    
+
     info = {
       name: name,
       position: position,
@@ -123,8 +137,23 @@ function clean_position_array(position){
     return this.filter(function(i) {return a.indexOf(i) < 0;});
   };
 
-  diff = initial_array.diff(stopgap_words);  
-  console.log(diff);
+  diff = initial_array.diff(stopgap_words);
+
+  repeat_big = 0;
+  repeat_medium = 0;
+
+  for (var i = 0; i < diff.length; i++) {
+    if (is_in_array(diff[i], big_fish)) {
+      // console.log(diff[i])
+      repeat_big += 1;
+    } else if (is_in_array(diff[i], medium_fish)) {
+      repeat_medium += 1;
+    }
+    if (repeat_big > 1 || repeat_medium > 1) {
+      diff[i] = '---';
+    }
+  }
+
   return diff;
 }
 
@@ -136,7 +165,7 @@ function calculate_cool_score(data, company_employee_count){
   untouchable.forEach(function(entry) {
     // Looks For Overlap Between Untouchables and Title Keywords
     if (is_in_array(entry, position)){
-      data.cool -= 3;
+      data.cool -= 5;
     }
   });
 
@@ -171,6 +200,7 @@ function calculate_cool_score(data, company_employee_count){
 
 // Checks Whether a Value is in a Given Array and Returns True or False
 function is_in_array(s,your_array) {
+  // console.log(s, your_array, "Thing");
   for (var i = 0; i < your_array.length; i++) {
       if (your_array[i].toLowerCase() === s.toLowerCase()) return true;
   }
@@ -188,8 +218,8 @@ function lists(){
 
   for (i of potential_leads) {
     i = calculate_cool_score(i, number_of_employees);
-    console.log(i, i.cool);
-    console.log("---------------------------")
+    // console.log(i, i.cool);
+    // console.log("---------------------------")
   }
 
   // Show Only Relevant Results

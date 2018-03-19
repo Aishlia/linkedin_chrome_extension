@@ -1,7 +1,2 @@
-facet=CC&facet=SE&facet.CC=6651289&facet.SE=8&count=25&start=0&pivotType=EMPLOYEE&pivotId=6651289&trackingInfoJson.contextId=99E7FBCD406B1A1500B86B40A42B0000
-facet=CC&facet=SE&facet.CC=6651289&facet.SE=9&count=25&start=0&pivotType=EMPLOYEE&pivotId=6651289&trackingInfoJson.contextId=99E7FBCD406B1A1500B86B40A42B0000
-facet=CC&facet=SE&facet.CC=6651289&facet.SE=7&count=25&start=0&pivotType=EMPLOYEE&pivotId=6651289&trackingInfoJson.contextId=99E7FBCD406B1A1500B86B40A42B0000
-
-12253577,SgcS,NAME_SEARCH?moduleKey=peopleSearchResults&pageKey=sales-search3-account-all-employees&contextId=99E7FBCD406B1A1500B86B40A42B0000&requestId=056080d1-cd84-4f51-aa29-6339b9f8e313&action=CLICK&target=urn%3Ali%3AsalesLead%3A(-1%2C12253577)&pageNumber=0&targetEl=profilelink&position=1&trk=lss-serp-result-lead_name
-12253577,SgcS,NAME_SEARCH?moduleKey=peopleSearchResults&pageKey=sales-search3-account-all-employees&contextId=99E7FBCD406B1A1500B86B40A42B0000&requestId=056080d1-cd84-4f51-aa29-6339b9f8e313&action=CLICK&target=urn%3Ali%3AsalesLead%3A(-1%2C12253577)&pageNumber=0&targetEl=profilelink&position=1&trk=lss-serp-result-lead_name
-1234302,MNv2,NAME_SEARCH?moduleKey=peopleSearchResults&pageKey=sales-search3-account-all-employees&contextId=99E7FBCD406B1A1500B86B40A42B0000&requestId=056080d1-cd84-4f51-aa29-6339b9f8e313&action=CLICK&target=urn%3Ali%3AsalesLead%3A(-1%2C1234302)&pageNumber=0&targetEl=profilelink&position=2&trk=lss-serp-result-lead_name
+?facet=G&facet=CC&facet.CC=4928&count=25&start=0&pivotType=EMPLOYEE&pivotId=4928&trackingInfoJson.contextId=12AC61082CF01B15008017A4F62A0000
+?facet=G&facet=CC&facet.G=us%3A0&facet.CC=4928&count=25&start=0&pivotType=EMPLOYEE&pivotId=4928&trackingInfoJson.contextId=12AC61082CF01B15008017A4F62A0000
