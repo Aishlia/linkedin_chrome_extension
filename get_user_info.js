@@ -26,10 +26,6 @@ function get_info() {
   // Looking for the location (the one listed directly under the name)
   let li = document.getElementsByTagName("li");
   for (elt of li) {
-    // if (elt.classList.contains('title')) {
-    //   title = elt.innerHTML;
-    //   console.log("Title: ", title); // Title
-    // }
     if (elt.classList.contains("location-industry")) {
       let span = elt.getElementsByTagName("span");
       for (elt_a of span) {
@@ -52,7 +48,7 @@ function get_info() {
       }
     }
   } catch (err) {
-    info.company_name = ""
+    info.company_name = "";
   }
 
   chrome.runtime.sendMessage(info, function(response) {
