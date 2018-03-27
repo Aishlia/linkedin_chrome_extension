@@ -59,6 +59,7 @@ function filterUserInfo(){
   });
 };
 
+
 document.getElementById('ed_saveContact').addEventListener('click', get_user_info);
 document.getElementById('ed_findContact').addEventListener('click', get_user_url);
 document.getElementById('ed_searchContact').addEventListener('click', searchUserInfo);

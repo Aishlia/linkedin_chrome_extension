@@ -45,22 +45,26 @@ function get_email(name, url) {
   request.send();
 }
 
-function send_info(name, company, location, title, website, email) {
+function send_info(name, company, email) {
   var request = new XMLHttpRequest();
 
   name = "name=" + name;
   company = "&company=" + company;
-  location = "&location=" + location;
-  title = "&title=" + title;
-  website = "&website=" + website;
+  // location = "&location=" + location;
+  // title = "&title=" + title;
+  // website = "&website=" + website;
   email = "&email=" + email;
 
   request.open(
-    "POST", "http://127.0.0.1:8000/contacts/?" + name + company + location + title + website + email, true
+    "POST", "http://127.0.0.1:8000/contacts/?" + name + company + email, true
   );
+
+  request.setRequestHeader('Content-Type', 'application/javascript')
   request.send();
 }
 
 get_url();
 
-send_info("asdf", "asdfg", "asdfasdf", "asdfadsf", "https://www.asdfasdf.com", "asdf@asdf.com");
+send_info("Edyarbsdfgds", "ZZZresdfgdsa", "asdf@adfgdfgsdf.com");
+
+// send_info("Edyarbds", "Bredsa", "asdf@asdf.com");
