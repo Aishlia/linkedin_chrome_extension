@@ -16,6 +16,34 @@ function get_url() {
   }
 }
 
+function proper_website(url) {
+  if (url.includes("https://") || url.includes("http://"))
+    return url;
+  else if (url.includes("www."))
+    return "http://" + url;
+  else
+    return "http://www." + url;
+}
+
+function send_info(name_in, company_in, person_location_in, title_in, website_in, email_in) {
+  website = proper_website(website_in);
+  var request = new XMLHttpRequest();
+
+  name = "name=" + name_in;
+  company = "&company=" + company_in;
+  person_location = "&location=" + person_location_in;
+  title = "&title=" + title_in;
+  website = "&website=" + website_in;
+  email = "&email=" + email_in;
+
+  var url = 'http://127.0.0.1:8000/contacts/'
+  var params = name + company + person_location + title + website + email;
+  request.open("POST", url, true);
+  request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+  request.send(params);
+}
+
 function get_email(name, url) {
   // Create a request variable and assign a new XMLHttpRequest object to it.
   var request = new XMLHttpRequest();
@@ -35,7 +63,18 @@ function get_email(name, url) {
     if (request.status >= 200 && request.status < 400) {
       // Sends JSON Data to Background
       chrome.runtime.sendMessage({ email: data.email }, function(response) {
-        console.log(response);
+        console.log(response.response.name,
+          response.response.company_name,
+          response.response.location_of_contact,
+          response.response.title,
+          response.response.url,
+          response.response.email);
+        return send_info(response.response.name,
+          response.response.company_name,
+          response.response.location_of_contact,
+          response.response.title,
+          response.response.url,
+          response.response.email);
       });
     } else {
       console.log("error");
@@ -45,24 +84,7 @@ function get_email(name, url) {
   request.send();
 }
 
-function send_info(name, company, email) {
-  var request = new XMLHttpRequest();
-
-  name = "name=" + name;
-  company = "&company=" + company;
-  // location = "&location=" + location;
-  // title = "&title=" + title;
-  // website = "&website=" + website;
-  email = "&email=" + email;
-
-  request.open(
-    "POST", "http://127.0.0.1:8000/contacts/?" + name + company + email, true
-  );
-
-  request.setRequestHeader('Content-Type', 'application/javascript')
-  request.send();
-}
-
 get_url();
 
-send_info("Edyarbsdfgds", "ZZZresdfgdsa", "asdf@adfgdfgsdf.com");
+
+// send_info("Edyarbds", "Bredsa", "asdf@asdf.com");

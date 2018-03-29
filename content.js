@@ -1,33 +1,20 @@
-function send_info(name, company, email) {
-    var request = new XMLHttpRequest();
-  
-    name = "name=" + name;
-    company = "&company=" + company;
-    // location = "&location=" + location;
-    // title = "&title=" + title;
-    // website = "&website=" + website;
-    email = "&email=" + email;
-  
-    request.open(
-      "POST", "http://127.0.0.1:8000/contacts/?" + name + company + email, true
-    );
-  
-    request.setRequestHeader('Content-Type', 'application/javascript')
-    request.send();
-}
-
-
-chrome.permissions.request({
-    permissions: ['tabs'],
-    origins: ['http://www.google.com/']
-  }, function(granted) {
-    // The callback argument will be true if the user granted the permissions.
-    if (granted) {
-      send_info("Edyarbds", "Bredsa", "asdf@asdf.com");
-    } else {
-      break;
-    }
-  });
+// function send_info(name, company, email) {
+//     var request = new XMLHttpRequest();
+//
+//     name = "name=" + name;
+//     company = "&company=" + company;
+//     // location = "&location=" + location;
+//     // title = "&title=" + title;
+//     // website = "&website=" + website;
+//     email = "&email=" + email;
+//
+//     request.open(
+//       "POST", "http://127.0.0.1:8000/contacts/?" + name + company + email, true
+//     );
+//
+//     request.setRequestHeader('Content-Type', 'application/javascript')
+//     request.send();
+// }
 
 // send_info("Edyarbsdfgds", "ZZZresdfgdsa", "asdf@adfgdfgsdf.com");
 
