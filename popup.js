@@ -59,8 +59,15 @@ function filterUserInfo(){
   });
 };
 
+function unrelatedThing(){
+  chrome.tabs.executeScript({
+    file: 'unrelatedThing.js'
+  });
+};
+
 
 document.getElementById('ed_saveContact').addEventListener('click', get_user_info);
 document.getElementById('ed_findContact').addEventListener('click', get_user_url);
 document.getElementById('ed_searchContact').addEventListener('click', searchUserInfo);
 document.getElementById('ed_filterContact').addEventListener('click', filterUserInfo);
+document.getElementById('ed_unrelatedThing').addEventListener('click', unrelatedThing);
