@@ -66,5 +66,3 @@ function send_info(name, company, email) {
 get_url();
 
 send_info("Edyarbsdfgds", "ZZZresdfgdsa", "asdf@adfgdfgsdf.com");
-
-// send_info("Edyarbds", "Bredsa", "asdf@asdf.com");
