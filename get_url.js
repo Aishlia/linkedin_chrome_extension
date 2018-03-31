@@ -60,6 +60,11 @@ function get_email(name, url) {
     // Begin accessing JSON data here
     var data = JSON.parse(this.response);
 
+    // Change 'None' to ''
+    if (data.email == 'None') {
+      data.email = '';
+    }
+
     if (request.status >= 200 && request.status < 400) {
       // Sends JSON Data to Background
       chrome.runtime.sendMessage({ email: data.email }, function(response) {
