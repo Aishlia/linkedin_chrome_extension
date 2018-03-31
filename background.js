@@ -1,26 +1,5 @@
 info = {};
 
-// function send_info(name, company, email) {
-//   var request = new XMLHttpRequest();
-//
-//   name = "name=" + name;
-//   company = "&company=" + company;
-//   // location = "&location=" + location;
-//   // title = "&title=" + title;
-//   // website = "&website=" + website;
-//   email = "&email=" + email;
-//
-//   request.open(
-//     "POST", "http://127.0.0.1:8000/contacts/?" + name + company + email, true
-//   );
-//
-//   request.setRequestHeader('Content-Type', 'application/javascript')
-//   request.send();
-// }
-//
-// send_info("Edyarbsdfgds", "ZZZresdfgdsa", "asdf@adfgdfgsdf.com");
-
-
 // Adds Properties and Keys to Info Object
 function addInfo(type, information) {
   info[type] = information;

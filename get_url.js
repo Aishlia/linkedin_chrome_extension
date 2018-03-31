@@ -38,8 +38,29 @@ function send_info(name_in, company_in, person_location_in, title_in, website_in
 
   var url = 'http://127.0.0.1:8000/contacts/'
   var params = name + company + person_location + title + website + email;
-  request.open("POST", url, true);
+
+  request.open(
+    "POST", url, true
+  );
+
   request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  
+  request.onload = function() {
+    // Begin accessing JSON data here
+    var data = JSON.parse(this.response);
+
+    // Change 'None' to ''
+    if (data.email == 'None') {
+      data.email = '';
+    }
+
+    if (request.status >= 200 && request.status < 400) {
+      // Sends JSON Data to Background
+      console.log("Record Saved", data);
+    } else {
+      console.log("error", data);
+    }
+  };
 
   request.send(params);
 }
@@ -56,6 +77,7 @@ function get_email(name, url) {
   request.open(
     "GET", "https://email-finder-breadware.herokuapp.com/api?" + name + url, true
   );
+
   request.onload = function() {
     // Begin accessing JSON data here
     var data = JSON.parse(this.response);
@@ -68,12 +90,6 @@ function get_email(name, url) {
     if (request.status >= 200 && request.status < 400) {
       // Sends JSON Data to Background
       chrome.runtime.sendMessage({ email: data.email }, function(response) {
-        console.log(response.response.name,
-          response.response.company_name,
-          response.response.location_of_contact,
-          response.response.title,
-          response.response.url,
-          response.response.email);
         return send_info(response.response.name,
           response.response.company_name,
           response.response.location_of_contact,
@@ -90,6 +106,3 @@ function get_email(name, url) {
 }
 
 get_url();
-
-
-// send_info("Edyarbds", "Bredsa", "asdf@asdf.com");
