@@ -44,7 +44,7 @@ function send_info(name_in, company_in, person_location_in, title_in, website_in
   );
 
   request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  
+
   request.onload = function() {
     // Begin accessing JSON data here
     var data = JSON.parse(this.response);

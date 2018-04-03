@@ -5,20 +5,28 @@ info = {
   company_name: ""
 };
 
+function rid_of_amp(name) {
+  new_name = name
+  if (name.includes("&amp;")) {
+    new_name = name.replace(/&amp;/g, "&");
+  }
+  return new_name
+}
+
 function get_info() {
   // Looking for the name
   let headers = document.getElementsByTagName("h1");
   for (elt of headers) {
     if (elt.classList.contains("member-name")) {
-      info.name = elt.innerHTML;
+      info.name = rid_of_amp(elt.innerHTML);
     }
   }
 
-  //Looking for current position at the company (bad)
+  //Looking for current position at the company
   let h2 = document.getElementsByTagName("h2");
   for (elt of h2) {
     if (elt.classList.contains("position-title")) {
-      info.title = elt.innerHTML;
+      info.title = rid_of_amp(elt.innerHTML);
       break; // 'position-title' includes past and present positions so break after first which is most recent
     }
   }
@@ -30,7 +38,7 @@ function get_info() {
       let span = elt.getElementsByTagName("span");
       for (elt_a of span) {
         if (elt_a.classList.contains("location")) {
-          info.location_of_contact = elt_a.innerHTML;
+          info.location_of_contact = rid_of_amp(elt_a.innerHTML);
         }
       }
     }
@@ -42,7 +50,7 @@ function get_info() {
 
     for (elt of h3) {
       if (elt.classList.contains("company-name")) {
-        info.company_name = elt.getElementsByTagName("a")[0].innerHTML;
+        info.company_name = rid_of_amp(elt.getElementsByTagName("a")[0].innerHTML);
         company_url = elt.getElementsByTagName("a")[0].href;
         break; // 'company-name' includes past and present companies so break after first which is most recent
       }
@@ -66,6 +74,7 @@ function switch_page() {
     if (elt.classList.contains("company-name")) {
       other_page_url = elt.getElementsByTagName("a")[0];
       if (other_page_url) other_page_url.click();
+      else alert("no link to other thing");
       return get_url();
     }
   }
