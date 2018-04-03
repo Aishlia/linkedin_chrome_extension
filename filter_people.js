@@ -237,13 +237,17 @@ function lists(){
     }
   }
 
-  // sort
-  len = result.length - 1;
-  for (i=0; i<1000; i++) {
-    if (result[i%len].cool < result[i%len+1].cool) {
-      temp = result[i%len];
-      result[i%len] = result[i%len+1];
-      result[i%len+1] = temp;
+  if (result.length == 0) {
+    alert("noone cool enough")
+  } else if (result.length > 1) {
+    // sort
+    len = result.length - 1;
+    for (i=0; i<1000; i++) {
+      if (result[i%len].cool < result[i%len+1].cool) {
+        temp = result[i%len];
+        result[i%len] = result[i%len+1];
+        result[i%len+1] = temp;
+      }
     }
   }
 
