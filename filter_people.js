@@ -97,6 +97,14 @@ const custom_scores = [
   }
 ]
 
+function rid_of_amp(name) {
+  new_name = name
+  if (name.includes("&amp;")) {
+    new_name = name.replace(/&amp;/g, "&");
+  }
+  return new_name
+}
+
 // Pulls List of Potential Leads From the Page
 function save_potential_leads(){
   //Setup Vars
@@ -106,8 +114,8 @@ function save_potential_leads(){
 
   for (elt of initial_data){
     //Scrape Variables off Page
-    name = elt.getElementsByClassName("name-link")[0].innerHTML;
-    position = elt.getElementsByClassName("info")[0].getElementsByTagName('p')[0].innerHTML;
+    name = rid_of_amp(elt.getElementsByClassName("name-link")[0].innerHTML);
+    position = rid_of_amp(elt.getElementsByClassName("info")[0].getElementsByTagName('p')[0].innerHTML);
     url = elt.getElementsByClassName("image-wrapper")[0].href;
 
     info = {
