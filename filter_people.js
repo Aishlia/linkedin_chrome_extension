@@ -5,12 +5,14 @@ var repeat_medium = 0;
 //Goes off Indian Cast System, If you don't know it, pick up a fucking book
 const untouchable = [
 'customer', 'human', 'affairs', 'tax', 'finance', 'accounting', 'marketing', 'software', 'engineer',
- 'developer', 'quality', 'communications', 'intern', 'investor', 'assistant'
+ 'developer', 'quality', 'communications', 'intern', 'investor', 'assistant', 'taxes', 'relations', 'employee', 'creative', 'fp&a',
+ 'safety', 'lecurer', 'hr', 'staff', 'recruiter', 'pr', 'midwest', 'talent', 'accounts', 'sales',
+ 'retail', 'supply'
 ]; // investor, assistant
 
 // Slighty Touchable - You still shouldn't touch them though
 const sudra = [
-'app', 'development', 'sales'
+'app'
 ];
 
 // StopGap Words Found in Title - Adding to This List will Remove the Word From Titles
@@ -27,19 +29,25 @@ const custom_scores = [
     'position': 'cto',
     'less_than_50': 8,
     'greater_than_50_less_than_1000': 6,
-    'greater_than_1000_employees': -3
+    'greater_than_1000_employees': 3
   },
   {
     'position': 'iot',
-    'less_than_50': 3,
-    'greater_than_50_less_than_1000': 3,
-    'greater_than_1000_employees': 3
+    'less_than_50': 4,
+    'greater_than_50_less_than_1000': 4,
+    'greater_than_1000_employees': 4
   },
   {
     'position': 'ceo',
     'less_than_50': 6,
     'greater_than_50_less_than_1000': 4,
-    'greater_than_1000_employees': -5
+    'greater_than_1000_employees': 1
+  },
+  {
+    'position': 'coo',
+    'less_than_50': 5,
+    'greater_than_50_less_than_1000': 3,
+    'greater_than_1000_employees': 2
   },
   {
     'position': 'founder',
@@ -92,6 +100,12 @@ const custom_scores = [
   {
     'position': 'sr.',
     'less_than_50': 0.5,
+    'greater_than_50_less_than_1000': 0.5,
+    'greater_than_1000_employees': 0.5
+  },
+  {
+    'position': 'manager',
+    'less_than_50': .5,
     'greater_than_50_less_than_1000': 0.5,
     'greater_than_1000_employees': 0.5
   }
