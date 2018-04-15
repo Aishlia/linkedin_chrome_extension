@@ -2,7 +2,7 @@ function switch_page() {
   console.log(location)
   url = location.href
   // new_location = url.replace("&count=25", "&count=300")
-  new_location = location.href + "&count=300" + "&facet.G=us%3A0"
+  new_location = location.href + "&count=500" + "&facet.G=us%3A0"
   // url.slice(url.indexOf("&count"), url.indexOf("&count")+9)
   location = new_location;
   // location = location + '&count=300'

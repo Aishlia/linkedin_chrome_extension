@@ -5,8 +5,8 @@ var repeat_medium = 0;
 //Goes off Indian Cast System, If you don't know it, pick up a fucking book
 const untouchable = [
   'affairs', 'tax', 'finance', 'accounting', 'marketing', 'software', 'communications', 'intern', 'investor',
-  'assistant', 'taxes', 'relations', 'creative', 'fp&a', 'safety', 'hr', 'recruiter', 'pr', 'talent', 'sales', 
-  'supply', 'estate', 'legal'
+  'assistant', 'taxes', 'relations', 'creative', 'fp&a', 'safety', 'hr', 'recruiter', 'pr', 'talent', 'sales', 'business',
+  'supply', 'estate', 'legal', 'payroll', 'risk', 'fellow', 'sourcing', 'human', 'treasurer', 'compliance', 'technician', 'packaging'
 ]; // investor, assistant
 
 // Slighty Touchable - You still shouldn't touch them though
@@ -14,9 +14,9 @@ const sudra = [
   'app'
 ];
 
-// Desirables get a +2 Boost
+// Desireables get a +2 Boost
 const kshatriyas = [
-  
+  'engineering', 'electronics', 'product', 'development'
 ];
 
 // StopGap Words Found in Title - Adding to This List will Remove the Word From Titles
@@ -82,6 +82,12 @@ const custom_scores = [
     'less_than_50': -2,
     'greater_than_50_less_than_1000': 0,
     'greater_than_1000_employees': 9
+  },
+  {
+    'position': 'chairman',
+    'less_than_50': -5,
+    'greater_than_50_less_than_1000': -5,
+    'greater_than_1000_employees': -5
   },
   {
     'position': 'v.p.',
@@ -266,11 +272,11 @@ function lists(){
   }
 
   if (result.length == 0) {
-    alert("noone cool enough")
+    alert("none cool enough")
   } else if (result.length > 1) {
     // sort
     len = result.length - 1;
-    for (i=0; i<1000; i++) {
+    for (i=0; i<1000000; i++) {
       if (result[i%len].cool < result[i%len+1].cool) {
         temp = result[i%len];
         result[i%len] = result[i%len+1];
