@@ -4,15 +4,19 @@ var repeat_medium = 0;
 
 //Goes off Indian Cast System, If you don't know it, pick up a fucking book
 const untouchable = [
-'customer', 'human', 'affairs', 'tax', 'finance', 'accounting', 'marketing', 'software', 'engineer',
- 'developer', 'quality', 'communications', 'intern', 'investor', 'assistant', 'taxes', 'relations', 'employee', 'creative', 'fp&a',
- 'safety', 'lecurer', 'hr', 'staff', 'recruiter', 'pr', 'midwest', 'talent', 'accounts', 'sales',
- 'retail', 'supply'
+  'affairs', 'tax', 'finance', 'accounting', 'marketing', 'software', 'communications', 'intern', 'investor',
+  'assistant', 'taxes', 'relations', 'creative', 'fp&a', 'safety', 'hr', 'recruiter', 'pr', 'talent', 'sales', 'business',
+  'supply', 'estate', 'legal', 'payroll', 'risk', 'fellow', 'sourcing', 'human', 'treasurer', 'compliance', 'technician', 'packaging'
 ]; // investor, assistant
 
 // Slighty Touchable - You still shouldn't touch them though
 const sudra = [
-'app'
+  'app'
+];
+
+// Desireables get a +2 Boost
+const kshatriyas = [
+  'engineering', 'electronics', 'product', 'development'
 ];
 
 // StopGap Words Found in Title - Adding to This List will Remove the Word From Titles
@@ -33,9 +37,9 @@ const custom_scores = [
   },
   {
     'position': 'iot',
-    'less_than_50': 4,
-    'greater_than_50_less_than_1000': 4,
-    'greater_than_1000_employees': 4
+    'less_than_50': 5,
+    'greater_than_50_less_than_1000': 5,
+    'greater_than_1000_employees': 5
   },
   {
     'position': 'ceo',
@@ -78,6 +82,12 @@ const custom_scores = [
     'less_than_50': -2,
     'greater_than_50_less_than_1000': 0,
     'greater_than_1000_employees': 9
+  },
+  {
+    'position': 'chairman',
+    'less_than_50': -5,
+    'greater_than_50_less_than_1000': -5,
+    'greater_than_1000_employees': -5
   },
   {
     'position': 'v.p.',
@@ -199,6 +209,14 @@ function calculate_cool_score(data, company_employee_count){
     }
   });
 
+  // Boost Some Keywords
+  kshatriyas.forEach(function(entry){
+    // Looks For Overlap Between Sudra and Title Keywords
+    if (is_in_array(entry, position)){
+      data.cool += 2;
+    }
+  });
+
   // Under Employee Special Logic
   for(var a = 0; a < custom_scores.length; a++){
     // See if Position in Array Matches Keyword in Title
@@ -235,6 +253,8 @@ function lists(){
   var number = string_of_employees.substring(string_of_employees.length - 10).match(/\d/g);
   number_of_employees = number.join("");
 
+  console.log(number_of_employees);
+
   // pulling first page of people
   let potential_leads = save_potential_leads();
 
@@ -252,11 +272,11 @@ function lists(){
   }
 
   if (result.length == 0) {
-    alert("noone cool enough")
+    alert("none cool enough")
   } else if (result.length > 1) {
     // sort
     len = result.length - 1;
-    for (i=0; i<1000; i++) {
+    for (i=0; i<1000000; i++) {
       if (result[i%len].cool < result[i%len+1].cool) {
         temp = result[i%len];
         result[i%len] = result[i%len+1];
