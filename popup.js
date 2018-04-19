@@ -77,9 +77,16 @@ function saveCompanies(){
   });
 };
 
+function companyInfo(){
+  chrome.tabs.executeScript({
+    file: 'companyInfo.js'
+  });
+};
+
 document.getElementById('ed_saveContact').addEventListener('click', get_user_info);
 document.getElementById('ed_findContact').addEventListener('click', get_user_url);
 document.getElementById('ed_searchContact').addEventListener('click', searchUserInfo);
 document.getElementById('ed_filterContact').addEventListener('click', filterUserInfo);
 document.getElementById('ed_moreCompanies').addEventListener('click', openMoreCompanies);
 document.getElementById('ed_saveCompanies').addEventListener('click', saveCompanies);
+document.getElementById('ed_companyInfo').addEventListener('click', companyInfo);
