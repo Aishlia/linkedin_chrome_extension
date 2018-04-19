@@ -23,7 +23,7 @@ for (elt of a) {
         let p = document.getElementsByTagName("p");
             for (elt_p of p) {
                 if (elt_p.classList.contains("topcard-extended-description-modal-content-text")) {
-                    company_discription = elt_p.innerHTML
+                    company_discription = String(elt_p.innerHTML)
                 }
             }
     }
