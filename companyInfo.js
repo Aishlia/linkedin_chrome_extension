@@ -8,7 +8,7 @@ for (elt of a) {
     }
 }
 
-company_website = ''
+company_website = ' '
 for (elt of a) {
     if (elt.innerHTML.includes("Website")) {
         company_website = elt.href
@@ -16,7 +16,7 @@ for (elt of a) {
     }
 }
 
-company_discription = ''
+company_discription = ' '
 for (elt of a) {
     if (elt.classList.contains("topcard-see-more-link")) {
         elt.click();
@@ -33,7 +33,7 @@ console.log(employee_count)
 console.log(employee_link)
 console.log(company_website)
 console.log(company_discription)
-alert(employee_count)
-alert(employee_link)
-alert(company_website)
-alert(company_discription)
+// alert(employee_count)
+// alert(employee_link)
+// alert(company_website)
+// alert(company_discription)
