@@ -83,9 +83,9 @@ function companyInfo(){
   });
 };
 
-function companyInfo(){
+function saveLeads(){
   chrome.tabs.executeScript({
-    file: 'get_list_company_info.js'
+    file: 'saveLeads.js'
   });
 };
 
@@ -96,4 +96,4 @@ document.getElementById('ed_filterContact').addEventListener('click', filterUser
 document.getElementById('ed_moreCompanies').addEventListener('click', openMoreCompanies);
 document.getElementById('ed_saveCompanies').addEventListener('click', saveCompanies);
 document.getElementById('ed_companyInfo').addEventListener('click', companyInfo);
-document.getElementById('ed_get_list_company_info').addEventListener('click', get_list_company_info);
+document.getElementById('ed_saveLeads').addEventListener('click', saveLeads);

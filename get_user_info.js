@@ -1,3 +1,6 @@
+// const description_selector = '#content-main > div.header-wrapper > header > div.entity-card.company.banner > div.content-container > div.modal-description-wrapper > h2'
+// console.log(document.querySelector(description_selector).getElementsByClassName('topcard-see-more-link'))
+
 info = {
   name: "",
   title: "",
@@ -12,6 +15,8 @@ function rid_of_amp(name) {
   }
   return new_name
 }
+
+// info.name = rid_of_amp(document.querySelector().innerHTML);
 
 function get_info() {
   // Looking for the name

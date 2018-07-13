@@ -24,7 +24,7 @@ function send_info(name, linkedin_url, geography, industry, company_headcount, c
 
     if (request.status >= 200 && request.status < 400) {
       // Sends JSON Data to Background
-      console.log("Record Saved", data);
+      console.log("Record Saved ", data);
     } else {
       console.log("error", data);
     }

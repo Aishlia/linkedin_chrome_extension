@@ -3,6 +3,8 @@ employee_linkz = ' '
 company_websitez = ' '
 company_discriptionz = ' '
 
+const website_url_selector = '#content-main > div.header-wrapper > header > div.entity-card.company.banner > div.right.actions-container > div.meta-links > div:nth-child(1)'
+
 let a = document.getElementsByTagName("a");
 
 for (elt of a) {
@@ -12,6 +14,9 @@ for (elt of a) {
         break;
     }
 }
+
+// console.log("oasdjflkjsd")
+// console.log("blarhhh", document.querySelector(website_url_selector).childNode[0].href)
 
 for (elt of a) {
     if (elt.innerHTML.includes("Website")) {
