@@ -2,7 +2,7 @@ var result = [];
 var repeat_big = 0;
 var repeat_medium = 0;
 
-//Goes off Indian caste System, If you don't know it, pick up a fucking book
+//Based on Indian caste system; If you don't know it, pick up a fucking book
 const untouchable = [
   'affairs', 'tax', 'finance', 'accounting', 'marketing', 'software', 'communications', 'intern', 'investor',
   'assistant', 'taxes', 'relations', 'creative', 'fp&a', 'safety', 'hr', 'recruiter', 'pr', 'talent', 'sales', 'business',
